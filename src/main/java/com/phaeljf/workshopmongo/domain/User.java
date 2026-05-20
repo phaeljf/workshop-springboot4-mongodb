@@ -1,14 +1,19 @@
 package com.phaeljf.workshopmongo.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-
+@Document
 public class User implements Serializable {
 
+    @Id
     private String id;
+
     private String name;
     private String email;
     private List<Post> posts = new ArrayList<>();
