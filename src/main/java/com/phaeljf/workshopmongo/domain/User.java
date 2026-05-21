@@ -16,7 +16,6 @@ public class User implements Serializable {
 
     private String name;
     private String email;
-
     public User(){}
 
     public User(String id, String name, String email) {
@@ -32,7 +31,7 @@ public class User implements Serializable {
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
 
-    
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
