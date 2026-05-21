@@ -1,6 +1,7 @@
 package com.phaeljf.workshopmongo.services;
 
 import com.phaeljf.workshopmongo.domain.User;
+import com.phaeljf.workshopmongo.dto.UserDTO;
 import com.phaeljf.workshopmongo.repository.UserRepository;
 import com.phaeljf.workshopmongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +27,11 @@ public class UserService {
        // repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
+    public User insert(User user) {
+        return repository.insert(user);
+    }
+
+    public User fromDTO(UserDTO userDTO) {
+        return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+    }
 }
