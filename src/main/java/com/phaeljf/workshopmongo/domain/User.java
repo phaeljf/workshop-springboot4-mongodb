@@ -16,7 +16,6 @@ public class User implements Serializable {
 
     private String name;
     private String email;
-    private List<Post> posts = new ArrayList<>();
 
     public User(){}
 
@@ -32,8 +31,8 @@ public class User implements Serializable {
     public void setName(String name) { this.name = name;}
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
-    public List<Post> getPosts() {return posts;}
 
+    
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
