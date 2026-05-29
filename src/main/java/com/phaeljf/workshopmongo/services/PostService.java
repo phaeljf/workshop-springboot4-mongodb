@@ -7,6 +7,7 @@ import com.phaeljf.workshopmongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,12 @@ public class PostService {
     public List<Post> findByTitle(String title) {
         //return postRepository.findByTitleContainingIgnoreCase(title);
         return postRepository.searchTitle(title);
+    }
+
+    public List<Post> searchAll(String title, Date from, Date to) {
+        to = new Date(to.getTime() + 24 * 60 * 60 * 1000);
+        //return postRepository.findByTitleContainingIgnoreCase(title);
+        return postRepository.searchAll(title, from, to);
     }
 
 }

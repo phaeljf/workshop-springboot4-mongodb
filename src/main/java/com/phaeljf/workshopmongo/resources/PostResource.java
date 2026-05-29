@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,6 +35,18 @@ public class PostResource {
     public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
         text = URL.decodeParm(text);
         List<Post> list = postService.findByTitle(text);
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping(value = "/searchall")
+    public ResponseEntity<List<Post>> searchAll(@RequestParam(value = "text", defaultValue = "") String text,
+                                                @RequestParam(value = "from", defaultValue = "") String from,
+                                                @RequestParam(value = "to", defaultValue = "") String to) {
+        text = URL.decodeParm(text);
+        Date dateFrom = URL.convertDate(from, new Date(0L));
+        Date dateTo = URL.convertDate(to, new Date());
+
+        List<Post> list = postService.searchAll(text, dateFrom, dateTo);
         return ResponseEntity.ok().body(list);
     }
 
