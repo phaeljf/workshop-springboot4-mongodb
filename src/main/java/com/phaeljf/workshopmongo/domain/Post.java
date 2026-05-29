@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
+
 @Document
 public class Post implements Serializable {
 
@@ -18,6 +19,8 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author;
+
+    public Post() {}
 
     public Post(AuthorDTO author){
         this.author = author;
